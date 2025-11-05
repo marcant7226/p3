@@ -7,6 +7,7 @@
 #include <algorithm>
 
 #include "planning.h"
+using namespace std;
 
 
 void printPath(std::vector<int>& path, Graph& g) {
@@ -52,7 +53,7 @@ int getParent(int n, Graph& g)
 {
     // *** Task: Implement this function *** //
 
-    return -1;
+    return g.nodes.parent_index[n];
 
     // *** End student code *** //
 }
@@ -76,6 +77,43 @@ std::vector<int> bfs(int start, int goal, Graph& g)
     std::queue<int> visit_queue;
 
     // *** Task: Implement this function *** //
+    for (int i = 0; i < g.data.size(); i++)
+    {
+        g.nodes.distance = 10000;
+    }
+
+    int current;
+    vector<int> path;
+    visit_queue.push(start);
+
+    g.nodes[start].distance = 0;
+
+    vector<int> neighbors;
+    vector<int> costs;
+
+    while (!visit_queue.empty()){
+        current = visit_queue.front();
+        visit_queue.pop();
+        g.nodes[current].visited() = 1;
+        if(current == goal){
+            path = tracePath(current, g);
+            break;
+        }
+
+        neighbors = getNeighbors(current, g);
+        costs = getEdgeCosts(current, g);
+
+        for (int i = 0; i < neighbors.size(); i++){
+            if (neighbors[i].visited == 0) {
+                visit_queue.push(neighbor[i]);
+            }
+            if (neighbors[i].distance > (g.nodes[current].distance + costs[i])) {
+                neighbors[i].parent = current;
+                neighbors[i].distance = (g.nodes[current].distance + costs[i]);
+            }
+        }
+
+    }
 
     // *** End student code *** //
 
@@ -95,3 +133,4 @@ std::vector<int> dfs(int start, int goal, Graph& g)
 
     return path;
 }
+
