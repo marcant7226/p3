@@ -8,6 +8,7 @@
 #include <fstream>
 #include <iostream>
 #include <algorithm>
+using namespace std;
 
 #define HIGH 1e6
 
@@ -17,9 +18,11 @@
 struct Node
 {
     std::string city;
-    
     // *** Task: Add variables necessary for running your search algorithms *** //
-
+    string edges;
+    int parent_index;
+    float distance;
+    bool visited;
     // *** End student code *** //
 };
 
@@ -174,3 +177,4 @@ std::vector<int> bfs(int start, int goal, Graph& g);
 std::vector<int> dfs(int start, int goal, Graph& g);
 
 #endif  // PLANNING_H
+
