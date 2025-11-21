@@ -52,8 +52,10 @@ std::vector<float> getEdgeCosts(int n, Graph& g)
 int getParent(int n, Graph& g)
 {
     // *** Task: Implement this function *** //
-
-    return g.nodes.parent_index[n];
+    if (g.nodes[n].parent_index != -1) {
+        return g.nodes[n].parent_index;
+    }
+    return -1;
 
     // *** End student code *** //
 }
@@ -79,22 +81,23 @@ std::vector<int> bfs(int start, int goal, Graph& g)
     // *** Task: Implement this function *** //
     for (int i = 0; i < g.data.size(); i++)
     {
-        g.nodes.distance = 10000;
+        g.nodes[i].distance = HIGH;
+        g.nodes[i].visited = 0;
+        g.nodes[i].parent_index = -1;
     }
 
-    int current;
-    vector<int> path;
+    g.nodes[start].distance = 0;
     visit_queue.push(start);
 
-    g.nodes[start].distance = 0;
-
     vector<int> neighbors;
-    vector<int> costs;
+    vector<float> costs;
 
     while (!visit_queue.empty()){
-        current = visit_queue.front();
+        int current = visit_queue.front();
         visit_queue.pop();
-        g.nodes[current].visited() = 1;
+
+        g.nodes[current].visited =1;
+
         if(current == goal){
             path = tracePath(current, g);
             break;
@@ -104,12 +107,15 @@ std::vector<int> bfs(int start, int goal, Graph& g)
         costs = getEdgeCosts(current, g);
 
         for (int i = 0; i < neighbors.size(); i++){
-            if (neighbors[i].visited == 0) {
-                visit_queue.push(neighbor[i]);
+            int nb = neighbors[i];
+            if (!g.nodes[nb].visited)
+            {
+                visit_queue.push(nb);
             }
-            if (neighbors[i].distance > (g.nodes[current].distance + costs[i])) {
-                neighbors[i].parent = current;
-                neighbors[i].distance = (g.nodes[current].distance + costs[i]);
+            if (g.nodes[nb].distance > g.nodes[current].distance + costs[i])
+            {
+                g.nodes[nb].parent_index = current;
+                g.nodes[nb].distance = g.nodes[current].distance + costs[i];
             }
         }
 

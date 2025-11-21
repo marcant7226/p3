@@ -80,7 +80,10 @@ std::string mapAsString(GridGraph& graph)
 void initGraph(GridGraph& graph)
 {
     // *** Task: Initialize any variables YOU added to the GridGraph *** //
-
+    std::vector<CellNode> nodes;
+    std::vector<Cell> cells;
+    std::vector<std::vector<int>> edges;
+    std::vector<std::vector<float>> edge_costs;
     // *** End student code *** //
 }
 
@@ -142,6 +145,26 @@ bool isCellOccupied(int i, int j, const GridGraph& graph)
 std::vector<int> findNeighbors(int idx, const GridGraph& graph)
 {
     // *** Task: Implement this function *** //
+    Cell current = idxToCell(idx, graph);
+    std::vector<int> neighbors = std::vector<int>();
+
+    int di[8] = {-1,-1,-1, 0,0, 1,1,1};
+    int dj[8] = {-1, 0, 1,-1,1,-1,0,1};
+
+    for (int k = 0; k < 8; k++) {
+        int ni = current.i + di[k];
+        int nj = current.j + dj[k];
+
+        if (!isCellInBounds(ni, nj, graph))
+            continue;
+
+        int n_idx = cellToIdx(ni, nj, graph);
+
+        neighbors.push_back(n_idx);
+    }
+
+    return neighbors;
+}
 
     /**
      * NOTE: Be sure the neighbors are returned in the following order:
@@ -159,11 +182,7 @@ std::vector<int> findNeighbors(int idx, const GridGraph& graph)
      * This will be necessary to pass the test cases.
      */
 
-    std::vector<int> neighbors = std::vector<int>();
-    return neighbors;
-
     // *** End student code *** //
-}   
 
 
 bool checkCollisionFast(int idx, const GridGraph& graph)
@@ -213,7 +232,7 @@ int getParent(int idx, const GridGraph& graph)
 {
     // *** Task: Implement this function *** //
     
-    return 0;
+    return graph.nodes[idx].parent_index;
 
     // *** End student code *** //
 }
@@ -223,7 +242,7 @@ float getScore(int idx, const GridGraph& graph)
 {
     // *** Task: Implement this function if completing the A* extension *** //
     
-    return 0.0;
+    return graph.nodes[idx].distance;
 
     // *** End student code *** //
 }

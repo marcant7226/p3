@@ -22,7 +22,10 @@ struct Cell
 struct CellNode
 {
     // *** Task: Add variables necessary for running your search algorithms *** //
-
+    std::string city;
+    int parent_index;
+    float distance;
+    bool visited;
     // *** End student code *** //
 };
 
@@ -38,7 +41,7 @@ struct GridGraph
         origin_y(0),
         meters_per_cell(0),
         collision_radius(0.15),
-        threshold(-100)  // TODO: Adjust threshold.
+        threshold(100)  // TODO: Adjust threshold.
     {
     };
 
@@ -54,7 +57,10 @@ struct GridGraph
     std::vector<Cell> visited_cells;        // A list of visited cells. Used for visualization.
 
     // *** Task: Add any variable(s) necessary to associate CellNodes with each Cell in the GridGraph *** //
-
+    std::vector<CellNode> nodes;
+    std::vector<Cell> cells;
+    std::vector<std::vector<int>> edges;
+    std::vector<std::vector<float>> edge_costs;
     // *** End student code *** //
 };
 

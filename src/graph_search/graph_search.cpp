@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include <queue>
+#include <algorithm>
 #include <functional>
 
 #include <path_planning/utils/math_helpers.h>
@@ -55,12 +56,61 @@ std::vector<Cell> breadthFirstSearch(GridGraph &graph, const Cell &start, const 
     int start_idx = cellToIdx(start.i, start.j, graph);
 
     // *** Task: Implement this function *** //
+    int width = graph.width; 
+    int height = graph.height;
 
-    // *** End student code *** //
+    int goal_idx = cellToIdx(goal.i, goal.j, graph);
+
+    if (graph.nodes.size() != width * height)
+        graph.nodes.resize(width * height);
+
+    for (auto &node : graph.nodes) {
+        node.visited = false;
+        node.parent_index = -1;
+    }
+
+    std::queue<int> q;
+    if (!isIdxOccupied(start_idx, graph) && !isIdxOccupied(goal_idx, graph)) {
+        graph.nodes[start_idx].visited = true;
+        q.push(start_idx);
+    } else {
+        return path;
+    }
+
+    bool found = false;
+
+    while (!q.empty()) {
+        int current = q.front();
+        q.pop();
+
+        if (current == goal_idx) {
+            found = true;
+            break;
+        }
+
+        std::vector<int> neighbors;
+        neighbors = findNeighbors(current, graph);
+
+        for (int nb : neighbors) {
+            if (!graph.nodes[nb].visited && !isIdxOccupied(nb, graph)) {
+                graph.nodes[nb].visited = true;
+                graph.nodes[nb].parent_index = current;
+                q.push(nb);
+            }
+        }
+    }
+
+    if (found) {
+        int idx = goal_idx;
+        while (idx != -1) {
+            path.push_back(idxToCell(idx, graph));
+            idx = graph.nodes[idx].parent_index;
+        }
+        std::reverse(path.begin(), path.end());
+    }
 
     return path;
 }
-
 std::vector<Cell> iterativeDeepeningSearch(GridGraph &graph, const Cell &start, const Cell &goal)
 {
     std::vector<Cell> path; // The final path should be placed here.
