@@ -1,0 +1,5 @@
+if(EXISTS "/home/mbot/p3/build/test_public[1]_tests.cmake")
+  include("/home/mbot/p3/build/test_public[1]_tests.cmake")
+else()
+  add_test(test_public_NOT_BUILT test_public_NOT_BUILT)
+endif()

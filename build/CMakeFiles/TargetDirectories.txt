@@ -1,0 +1,6 @@
+/home/mbot/p3/build/CMakeFiles/plan_in_michigan.dir
+/home/mbot/p3/build/CMakeFiles/nav_cli.dir
+/home/mbot/p3/build/CMakeFiles/test_public.dir
+/home/mbot/p3/build/CMakeFiles/test.dir
+/home/mbot/p3/build/CMakeFiles/edit_cache.dir
+/home/mbot/p3/build/CMakeFiles/rebuild_cache.dir
