@@ -153,6 +153,19 @@ nav_cli/fast:
 .PHONY : nav_cli/fast
 
 #=============================================================================
+# Target rules for targets named robot_plan_path
+
+# Build rule for target.
+robot_plan_path: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 robot_plan_path
+.PHONY : robot_plan_path
+
+# fast build rule for target.
+robot_plan_path/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/build
+.PHONY : robot_plan_path/fast
+
+#=============================================================================
 # Target rules for targets named test_public
 
 # Build rule for target.
@@ -240,12 +253,37 @@ src/2_path_planner_cli.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nav_cli.dir/build.make CMakeFiles/nav_cli.dir/src/2_path_planner_cli.cpp.s
 .PHONY : src/2_path_planner_cli.cpp.s
 
+src/3_robot_plan_path.o: src/3_robot_plan_path.cpp.o
+.PHONY : src/3_robot_plan_path.o
+
+# target to build an object file
+src/3_robot_plan_path.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/src/3_robot_plan_path.cpp.o
+.PHONY : src/3_robot_plan_path.cpp.o
+
+src/3_robot_plan_path.i: src/3_robot_plan_path.cpp.i
+.PHONY : src/3_robot_plan_path.i
+
+# target to preprocess a source file
+src/3_robot_plan_path.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/src/3_robot_plan_path.cpp.i
+.PHONY : src/3_robot_plan_path.cpp.i
+
+src/3_robot_plan_path.s: src/3_robot_plan_path.cpp.s
+.PHONY : src/3_robot_plan_path.s
+
+# target to generate assembly for a file
+src/3_robot_plan_path.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/src/3_robot_plan_path.cpp.s
+.PHONY : src/3_robot_plan_path.cpp.s
+
 src/graph_search/distance_transform.o: src/graph_search/distance_transform.cpp.o
 .PHONY : src/graph_search/distance_transform.o
 
 # target to build an object file
 src/graph_search/distance_transform.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nav_cli.dir/build.make CMakeFiles/nav_cli.dir/src/graph_search/distance_transform.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/src/graph_search/distance_transform.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_public.dir/build.make CMakeFiles/test_public.dir/src/graph_search/distance_transform.cpp.o
 .PHONY : src/graph_search/distance_transform.cpp.o
 
@@ -255,6 +293,7 @@ src/graph_search/distance_transform.i: src/graph_search/distance_transform.cpp.i
 # target to preprocess a source file
 src/graph_search/distance_transform.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nav_cli.dir/build.make CMakeFiles/nav_cli.dir/src/graph_search/distance_transform.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/src/graph_search/distance_transform.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_public.dir/build.make CMakeFiles/test_public.dir/src/graph_search/distance_transform.cpp.i
 .PHONY : src/graph_search/distance_transform.cpp.i
 
@@ -264,6 +303,7 @@ src/graph_search/distance_transform.s: src/graph_search/distance_transform.cpp.s
 # target to generate assembly for a file
 src/graph_search/distance_transform.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nav_cli.dir/build.make CMakeFiles/nav_cli.dir/src/graph_search/distance_transform.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/src/graph_search/distance_transform.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_public.dir/build.make CMakeFiles/test_public.dir/src/graph_search/distance_transform.cpp.s
 .PHONY : src/graph_search/distance_transform.cpp.s
 
@@ -273,6 +313,7 @@ src/graph_search/graph_search.o: src/graph_search/graph_search.cpp.o
 # target to build an object file
 src/graph_search/graph_search.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nav_cli.dir/build.make CMakeFiles/nav_cli.dir/src/graph_search/graph_search.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/src/graph_search/graph_search.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_public.dir/build.make CMakeFiles/test_public.dir/src/graph_search/graph_search.cpp.o
 .PHONY : src/graph_search/graph_search.cpp.o
 
@@ -282,6 +323,7 @@ src/graph_search/graph_search.i: src/graph_search/graph_search.cpp.i
 # target to preprocess a source file
 src/graph_search/graph_search.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nav_cli.dir/build.make CMakeFiles/nav_cli.dir/src/graph_search/graph_search.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/src/graph_search/graph_search.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_public.dir/build.make CMakeFiles/test_public.dir/src/graph_search/graph_search.cpp.i
 .PHONY : src/graph_search/graph_search.cpp.i
 
@@ -291,6 +333,7 @@ src/graph_search/graph_search.s: src/graph_search/graph_search.cpp.s
 # target to generate assembly for a file
 src/graph_search/graph_search.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nav_cli.dir/build.make CMakeFiles/nav_cli.dir/src/graph_search/graph_search.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/src/graph_search/graph_search.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_public.dir/build.make CMakeFiles/test_public.dir/src/graph_search/graph_search.cpp.s
 .PHONY : src/graph_search/graph_search.cpp.s
 
@@ -300,6 +343,7 @@ src/utils/graph_utils.o: src/utils/graph_utils.cpp.o
 # target to build an object file
 src/utils/graph_utils.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nav_cli.dir/build.make CMakeFiles/nav_cli.dir/src/utils/graph_utils.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/src/utils/graph_utils.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_public.dir/build.make CMakeFiles/test_public.dir/src/utils/graph_utils.cpp.o
 .PHONY : src/utils/graph_utils.cpp.o
 
@@ -309,6 +353,7 @@ src/utils/graph_utils.i: src/utils/graph_utils.cpp.i
 # target to preprocess a source file
 src/utils/graph_utils.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nav_cli.dir/build.make CMakeFiles/nav_cli.dir/src/utils/graph_utils.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/src/utils/graph_utils.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_public.dir/build.make CMakeFiles/test_public.dir/src/utils/graph_utils.cpp.i
 .PHONY : src/utils/graph_utils.cpp.i
 
@@ -318,6 +363,7 @@ src/utils/graph_utils.s: src/utils/graph_utils.cpp.s
 # target to generate assembly for a file
 src/utils/graph_utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/nav_cli.dir/build.make CMakeFiles/nav_cli.dir/src/utils/graph_utils.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/src/utils/graph_utils.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_public.dir/build.make CMakeFiles/test_public.dir/src/utils/graph_utils.cpp.s
 .PHONY : src/utils/graph_utils.cpp.s
 
@@ -356,6 +402,7 @@ help:
 	@echo "... test"
 	@echo "... nav_cli"
 	@echo "... plan_in_michigan"
+	@echo "... robot_plan_path"
 	@echo "... test_public"
 	@echo "... src/1_planning_in_michigan/main.o"
 	@echo "... src/1_planning_in_michigan/main.i"
@@ -366,6 +413,9 @@ help:
 	@echo "... src/2_path_planner_cli.o"
 	@echo "... src/2_path_planner_cli.i"
 	@echo "... src/2_path_planner_cli.s"
+	@echo "... src/3_robot_plan_path.o"
+	@echo "... src/3_robot_plan_path.i"
+	@echo "... src/3_robot_plan_path.s"
 	@echo "... src/graph_search/distance_transform.o"
 	@echo "... src/graph_search/distance_transform.i"
 	@echo "... src/graph_search/distance_transform.s"

@@ -65,6 +65,7 @@ CMAKE_BINARY_DIR = /home/mbot/p3/build
 # The main recursive "all" target.
 all: CMakeFiles/plan_in_michigan.dir/all
 all: CMakeFiles/nav_cli.dir/all
+all: CMakeFiles/robot_plan_path.dir/all
 all: CMakeFiles/test_public.dir/all
 .PHONY : all
 
@@ -75,6 +76,7 @@ preinstall:
 # The main recursive "clean" target.
 clean: CMakeFiles/plan_in_michigan.dir/clean
 clean: CMakeFiles/nav_cli.dir/clean
+clean: CMakeFiles/robot_plan_path.dir/clean
 clean: CMakeFiles/test_public.dir/clean
 .PHONY : clean
 
@@ -131,13 +133,39 @@ CMakeFiles/nav_cli.dir/clean:
 .PHONY : CMakeFiles/nav_cli.dir/clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/robot_plan_path.dir
+
+# All Build rule for target.
+CMakeFiles/robot_plan_path.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mbot/p3/build/CMakeFiles --progress-num=9,10,11,12,13 "Built target robot_plan_path"
+.PHONY : CMakeFiles/robot_plan_path.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/robot_plan_path.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mbot/p3/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/robot_plan_path.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/mbot/p3/build/CMakeFiles 0
+.PHONY : CMakeFiles/robot_plan_path.dir/rule
+
+# Convenience name for target.
+robot_plan_path: CMakeFiles/robot_plan_path.dir/rule
+.PHONY : robot_plan_path
+
+# clean rule for target.
+CMakeFiles/robot_plan_path.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/robot_plan_path.dir/build.make CMakeFiles/robot_plan_path.dir/clean
+.PHONY : CMakeFiles/robot_plan_path.dir/clean
+
+#=============================================================================
 # Target rules for target CMakeFiles/test_public.dir
 
 # All Build rule for target.
 CMakeFiles/test_public.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_public.dir/build.make CMakeFiles/test_public.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_public.dir/build.make CMakeFiles/test_public.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mbot/p3/build/CMakeFiles --progress-num=9,10,11,12,13,14 "Built target test_public"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/mbot/p3/build/CMakeFiles --progress-num=14,15,16,17,18,19 "Built target test_public"
 .PHONY : CMakeFiles/test_public.dir/all
 
 # Build rule for subdir invocation for target.

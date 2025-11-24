@@ -15,6 +15,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/local/lib/cmake/GTest/GTestConfigVersion.cmake"
   "/usr/local/lib/cmake/GTest/GTestTargets-noconfig.cmake"
   "/usr/local/lib/cmake/GTest/GTestTargets.cmake"
+  "/usr/local/lib/cmake/mbot_bridge/mbot_bridgeConfig.cmake"
+  "/usr/local/lib/cmake/mbot_bridge/mbot_bridgeTargets-relwithdebinfo.cmake"
+  "/usr/local/lib/cmake/mbot_bridge/mbot_bridgeTargets.cmake"
   "/usr/share/cmake-3.25/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.25/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.25/Modules/CMakeCommonLanguageInclude.cmake"
@@ -59,5 +62,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/plan_in_michigan.dir/DependInfo.cmake"
   "CMakeFiles/nav_cli.dir/DependInfo.cmake"
+  "CMakeFiles/robot_plan_path.dir/DependInfo.cmake"
   "CMakeFiles/test_public.dir/DependInfo.cmake"
   )

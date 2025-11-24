@@ -142,14 +142,12 @@ bool isCellOccupied(int i, int j, const GridGraph& graph)
 }
 
 
-std::vector<int> findNeighbors(int idx, const GridGraph& graph)
-{
-    // *** Task: Implement this function *** //
+std::vector<int> findNeighbors(int idx, const GridGraph& graph) {
     Cell current = idxToCell(idx, graph);
-    std::vector<int> neighbors = std::vector<int>();
+    std::vector<int> neighbors;
 
-    int di[8] = {-1,-1,-1, 0,0, 1,1,1};
-    int dj[8] = {-1, 0, 1,-1,1,-1,0,1};
+    int di[8] = {-1,-1,-1, 0, 0, 1,1,1};
+    int dj[8] = {-1, 0, 1,-1, 1,-1,0,1};
 
     for (int k = 0; k < 8; k++) {
         int ni = current.i + di[k];
@@ -159,7 +157,6 @@ std::vector<int> findNeighbors(int idx, const GridGraph& graph)
             continue;
 
         int n_idx = cellToIdx(ni, nj, graph);
-
         neighbors.push_back(n_idx);
     }
 
@@ -173,7 +170,6 @@ std::vector<int> findNeighbors(int idx, const GridGraph& graph)
      * -1 in i direction, +0 in j direction
      * -1 in i direction, +1 in j direction
      * +0 in i direction, -1 in j direction
-     * +0 in i direction, +0 in j direction
      * +0 in i direction, +1 in j direction
      * +1 in i direction, -1 in j direction 
      * +1 in i direction, +0 in j direction
@@ -274,9 +270,8 @@ std::vector<Cell> tracePath(int goal, const GridGraph& graph)
     {
         path.push_back(idxToCell(current, graph));
         current = getParent(current, graph);
-    } while (current >= 0);  // A cell with no parent has parent -1.
-
-    // Since we built the path backwards, we need to reverse it.
+    } 
+    while (current >= 0); 
     std::reverse(path.begin(), path.end());
     return path;
 }

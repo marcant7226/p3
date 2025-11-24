@@ -56,6 +56,7 @@ std::vector<Cell> breadthFirstSearch(GridGraph &graph, const Cell &start, const 
     int start_idx = cellToIdx(start.i, start.j, graph);
 
     // *** Task: Implement this function *** //
+    
     int width = graph.width; 
     int height = graph.height;
 
@@ -67,15 +68,19 @@ std::vector<Cell> breadthFirstSearch(GridGraph &graph, const Cell &start, const 
     for (auto &node : graph.nodes) {
         node.visited = false;
         node.parent_index = -1;
+        node.distance = std::numeric_limits<float>::infinity();
     }
 
+    if (isIdxOccupied(start_idx, graph) || isIdxOccupied(goal_idx, graph) ||
+        checkCollision(start_idx, graph) || checkCollision(goal_idx, graph))
+        return std::vector<Cell>();
+
     std::queue<int> q;
-    if (!isIdxOccupied(start_idx, graph) && !isIdxOccupied(goal_idx, graph)) {
-        graph.nodes[start_idx].visited = true;
-        q.push(start_idx);
-    } else {
-        return path;
-    }
+
+    graph.nodes[start_idx].visited = true;
+    graph.nodes[start_idx].distance = 0.f;
+    q.push(start_idx);
+    graph.visited_cells.push_back(start);
 
     bool found = false;
 
@@ -88,29 +93,41 @@ std::vector<Cell> breadthFirstSearch(GridGraph &graph, const Cell &start, const 
             break;
         }
 
-        std::vector<int> neighbors;
-        neighbors = findNeighbors(current, graph);
+        std::vector<int> neighbors = findNeighbors(current, graph);
+        Cell c = idxToCell(current, graph);
 
         for (int nb : neighbors) {
-            if (!graph.nodes[nb].visited && !isIdxOccupied(nb, graph)) {
-                graph.nodes[nb].visited = true;
-                graph.nodes[nb].parent_index = current;
-                q.push(nb);
+            if (graph.nodes[nb].visited || isIdxOccupied(nb, graph))
+                continue;
+
+            Cell nc = idxToCell(nb, graph);
+            graph.nodes[nb].visited = true;
+
+            if (checkCollision(nb,graph)){
+                continue;
             }
+
+
+            float dx = float(nc.i - c.i);
+            float dy = float(nc.j - c.j);
+            
+            if (graph.nodes[nb].distance > graph.nodes[current].distance + std::sqrt(dx*dx + dy*dy)){
+                graph.nodes[nb].distance = graph.nodes[current].distance + std::sqrt(dx*dx + dy*dy);
+                graph.nodes[nb].parent_index = current;
+            }
+
+            graph.visited_cells.push_back(nc);
+            q.push(nb);
         }
     }
 
-    if (found) {
-        int idx = goal_idx;
-        while (idx != -1) {
-            path.push_back(idxToCell(idx, graph));
-            idx = graph.nodes[idx].parent_index;
-        }
-        std::reverse(path.begin(), path.end());
-    }
+    if (found)
+        return tracePath(goal_idx, graph);
 
-    return path;
+    return std::vector<Cell>();
 }
+
+
 std::vector<Cell> iterativeDeepeningSearch(GridGraph &graph, const Cell &start, const Cell &goal)
 {
     std::vector<Cell> path; // The final path should be placed here.
