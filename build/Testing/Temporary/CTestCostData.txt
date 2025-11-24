@@ -1,8 +1,8 @@
-PlanningInMichigan.AnnArborMarquette 28 0.000573368
-PlanningInMichigan.SaginawBentonHarbor 28 0.000297941
-FindNeighbors.TestMiddle 10 0.000802769
-FindNeighbors.TestCorner 10 0.000814181
-BFS.TestEmpty 11 0.00101042
+PlanningInMichigan.AnnArborMarquette 51 0.000164387
+PlanningInMichigan.SaginawBentonHarbor 51 0.000176653
+FindNeighbors.TestMiddle 28 0.000301685
+FindNeighbors.TestCorner 28 0.000283626
+BFS.TestEmpty 31 0.000366922
 BFS.TestCorner 0 0
 ---
 BFS.TestCorner
